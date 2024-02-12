@@ -84,9 +84,10 @@ end
 
 |Resource|API endpoint|
 |:--|:--|
-|.hostgroups|hostgroup.get|
-|.hosts|hosts.get|
-|.problems|problems.get|
+|hostgroups, hostgroup(hostgroup_id)|hostgroup.get|
+|.hosts, host(host_id)|hosts.get|
+|.problems, problem(event_id)|problems.get|
+|.events, event(event_id)|problems.get|
 
 
 

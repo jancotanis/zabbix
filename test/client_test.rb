@@ -20,21 +20,37 @@ describe 'client' do
     hostgroups = @client.hostgroups
     assert hostgroups.count > 0, ".hostgroups found" 
     refute hostgroups.first.name.empty?, "hostgroups[].name not empty"
+    assert value(hostgroups.first.name).must_equal(@client.hostgroup(hostgroups.first.groupid).name), 'hostgroup vs hostgroups'
   end
-  it "#1 GET host.get" do
+  it "#2 GET host.get" do
     # just get them and try a parameter
     hosts = @client.hosts
     assert hosts.count > 0, ".hostgroups found" 
     refute hosts.first.name.empty?, "host[].name not empty"
+    assert value(hosts.first.name).must_equal(@client.host(hosts.first.hostid).name), 'host vs hosts'
   end
-  it "#1 GET problem.get" do
+  it "#3 GET problem.get" do
     # just get them and try a parameter
     all_problems = @client.problems
     assert all_problems.count > 0, ".hostgroups found" 
     refute all_problems.first.name.empty?, "problem[].name not empty"
-    
+    assert value(all_problems.first.name).must_equal(@client.problem(all_problems.first.eventid).name), 'hostgroup vs hostgroups'
+
     # get all problems for first group
-    problems = @client.problems({groupids: [@client.hostgroups.first.groupid]})
+    problems = @client.problems({ groupids: [@client.hostgroups.first.groupid] })
     assert problems.count < all_problems.count, "should be less problems for a asingle group"
+  end
+  it "#4 GET events.get" do
+    problem = @client.problems.first
+    events = @client.events({ 'eventids': [problem.eventid], 'selectHosts':['hostid'] })
+
+    assert events, 'event not nil'
+    event = events.first
+    assert event.hosts.first.hostid, 'hosts.first.hostid not nil'
+    result = @client.acknowledge_events({ 'eventids': [event.eventid], 'action':'2' })
+    assert value(events.first.name).must_equal(@client.event(events.first.eventid).name), 'event vs events'
+
+    # for some reason evendid is a string but and int when returned as result from acknowledging
+    assert result.eventids.include?(event.eventid.to_i), 'result should include acknowledged events'
   end
 end
