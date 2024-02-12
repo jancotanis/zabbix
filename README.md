@@ -9,7 +9,7 @@ Currently only the GET requests to get a list of hosts, host groups and problems
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'zabbix'
+gem 'zabbix_api_gem'
 ```
 
 And then execute:
@@ -18,14 +18,14 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install zabbix
+    $ gem install zabbix_api_gem
 
 ## Usage
 
 Before you start making the requests to API provide the client id and client secret and email/password using the configuration wrapping.
 
 ```
-require 'zabbix'
+require 'zabbix_api_gem'
 
 # use do block
 Zabbix.configure do |config|

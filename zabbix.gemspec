@@ -3,7 +3,7 @@
 require_relative 'lib/zabbix/version'
 
 Gem::Specification.new do |s|
-  s.name        = 'zabbix'
+  s.name        = 'zabbix_api_gem'
   s.version     = Zabbix::VERSION
   s.authors     = ['Janco Tanis']
   s.email       = 'gems@jancology.com'
