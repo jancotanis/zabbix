@@ -6,7 +6,7 @@ module Zabbix
   # @note All methods have been separated into modules and follow the same grouping used in api docs
   # @see https://www.zabbix.com/documentation/current/en/manual/api
   class Client < API
-
+  private
     def self.def_rpc_call(method, rpc_method, id_field = nil)
       self.send(:define_method, method) do |params = nil|
         rpc_call(rpc_method, params)
@@ -24,13 +24,14 @@ module Zabbix
       end
     end
 
-    def_rpc_call(:api_info, 'api.info')
-    def_rpc_call(:settings, 'settings.get')
-    def_rpc_call(:hostgroups, 'hostgroup.get', 'groupids')
-    def_rpc_call(:hosts, 'host.get', 'hostids')
-    def_rpc_call(:problems, 'problem.get', 'problemids')
-    def_rpc_call(:events, 'event.get', 'eventids')
-    def_rpc_call(:acknowledge_events, 'event.acknowledge')
+  public
+    def_rpc_call :api_info, 'api.info'
+    def_rpc_call :settings, 'settings.get'
+    def_rpc_call :hostgroups, 'hostgroup.get', 'groupids'
+    def_rpc_call :hosts, 'host.get', 'hostids'
+    def_rpc_call :problems, 'problem.get', 'problemids'
+    def_rpc_call :events, 'event.get', 'eventids'
+    def_rpc_call :acknowledge_events, 'event.acknowledge'
 
   end
 end

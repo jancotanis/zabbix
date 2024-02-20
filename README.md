@@ -1,4 +1,7 @@
 # Zabbix API
+[![Version](https://img.shields.io/gem/v/zabbix_api_gem.svg)](https://rubygems.org/gems/zabbix_api_gem)
+[![Maintainability](https://api.codeclimate.com/v1/badges/de2999161abdc8179fde/maintainability)](https://codeclimate.com/github/jancotanis/zabbix/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/de2999161abdc8179fde/test_coverage)](https://codeclimate.com/github/jancotanis/zabbix/test_coverage)
 
 This is a wrapper for the Zabix rest API. You can see the API endpoints here https://www.zabbix.com/documentation/current/en/manual/api/reference/
 
@@ -24,7 +27,7 @@ Or install it yourself as:
 
 Before you start making the requests to API provide the client id and client secret and email/password using the configuration wrapping.
 
-```
+```ruby
 require 'zabbix_api_gem'
 
 # use do block
@@ -47,7 +50,7 @@ end
 
 ## Resources
 ### Authentication
-```
+```ruby
 # setup configuration
 #
 client.login
@@ -59,7 +62,7 @@ client.login
 
 ### Server settings
 Return zabbix server settings
-```
+```ruby
 puts client.settings.default_theme
 ```
 
@@ -93,7 +96,7 @@ end
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/jancotanis/veeam.
+Bug reports and pull requests are welcome on GitHub at https://github.com/jancotanis/zabbix.
 
 ## License
 
