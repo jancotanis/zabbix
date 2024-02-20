@@ -6,7 +6,7 @@ module Zabbix
     # Authorize to the Zabbix portal using the access_token
     # @see https://www.zabbix.com/documentation/current/en/manual/api
     def login(options = {})
-      raise ArgumentError, "Accesstoken/api-key not set" unless access_token
+      raise ConfigurationError, "Accesstoken/api-key not set" unless access_token
       # only bearer token needed 
       # will do sanity check if token if valid
       rpc_call('settings.get')
