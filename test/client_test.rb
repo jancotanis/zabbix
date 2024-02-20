@@ -15,7 +15,12 @@ describe 'client' do
     end
     @client = Zabbix.client()
   end
-
+  it '#0 GET zabbix clock' do
+    t = @client.zabbix_clock(0)
+    assert value(t.year).must_equal 1970, '0 time is 1-1-1970'
+    assert value(t.day).must_equal 1, '0 time is 1-1-1970'
+    assert value(t.month).must_equal 1, '0 time is 1-1-1970'
+  end
   it "#1 GET hostgroups.get" do
     hostgroups = @client.hostgroups
     assert hostgroups.count > 0, ".hostgroups found" 
