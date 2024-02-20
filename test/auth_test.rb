@@ -12,7 +12,7 @@ describe 'auth' do
   it "#0 check required params" do
     c = Zabbix.client
     # missing endpoint
-    assert_raises ArgumentError do
+    assert_raises Zabbix::ConfigurationError do
       c.login
     end
   end
@@ -22,7 +22,7 @@ describe 'auth' do
     end
     c = Zabbix.client
     # missing access_token
-    assert_raises ArgumentError do
+    assert_raises Zabbix::ConfigurationError do
       c.login
     end
   end
