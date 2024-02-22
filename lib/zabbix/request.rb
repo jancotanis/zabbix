@@ -28,7 +28,7 @@ module Zabbix
         result = post( ZABBIX_ENDPOINT, options )
         raise RPCError, result.body['error'] if result.body['error']
 
-        WrAPI::Request::Entity.new(result.body['result'])
+        WrAPI::Request::Entity.create(result.body['result'])
       end
 
     end

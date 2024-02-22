@@ -9,3 +9,6 @@
 ## [0.3.0] - 2024-02-20
 - ConfigurationError raised if not configured properly
 
+## [0.3.1] - 2024-02-22
+- Fix problem with entity creation
+
