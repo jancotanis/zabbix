@@ -12,3 +12,6 @@
 ## [0.3.1] - 2024-02-22
 - Fix problem with entity creation
 
+## [0.3.2] - 2024-03-21
+- Refactory extract method
+

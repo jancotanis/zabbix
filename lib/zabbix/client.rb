@@ -11,15 +11,17 @@ module Zabbix
       self.send(:define_method, method) do |params = nil|
         rpc_call(rpc_method, params)
       end
-      if id_field
-        # strip trailing 's'
-        singular = method.to_s.chop.to_sym
-        self.send(:define_method, singular) do |ids,params = nil|
-          if ids.is_a?(Array)
-            rpc_call(rpc_method, {"#{id_field}":ids}.merge(params || {}))
-          else
-            rpc_call(rpc_method, {"#{id_field}":[ids]}.merge(params || {})).first
-          end
+    
+      # singular by stripping last trailing 's'
+      self.singular_method(method.to_s.chop.to_sym) if id_field
+    end
+    
+    def self.singular_method method
+      self.send(:define_method, method) do |ids,params = nil|
+        if ids.is_a?(Array)
+          rpc_call(rpc_method, {"#{id_field}":ids}.merge(params || {}))
+        else
+          rpc_call(rpc_method, {"#{id_field}":[ids]}.merge(params || {})).first
         end
       end
     end
