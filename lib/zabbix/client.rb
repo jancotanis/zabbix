@@ -13,10 +13,10 @@ module Zabbix
       end
     
       # singular by stripping last trailing 's'
-      self.singular_method(method.to_s.chop.to_sym) if id_field
+      self.singular_method(method.to_s.chop.to_sym, rpc_method, id_field) if id_field
     end
     
-    def self.singular_method method
+    def self.singular_method method, rpc_method, id_field
       self.send(:define_method, method) do |ids,params = nil|
         if ids.is_a?(Array)
           rpc_call(rpc_method, {"#{id_field}":ids}.merge(params || {}))

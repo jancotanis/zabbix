@@ -15,3 +15,6 @@
 ## [0.3.2] - 2024-03-21
 - Refactory extract method
 
+## [0.3.3] - 2024-03-21
+- Fix issues with extract method
+
