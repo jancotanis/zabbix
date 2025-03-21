@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 module Zabbix
-	
   # Generic error to be able to rescue all Zabbix errors
   class ZabbixError < StandardError; end
 
