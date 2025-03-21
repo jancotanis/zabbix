@@ -7,7 +7,7 @@ require File.expand_path('zabbix/client', __dir__)
 
 # This module provides a Ruby API wrapper for Zabbix.
 # It includes configuration options and creates client instances for interacting with the Zabbix API.
-# 
+#
 # @example Initialize a Zabbix client:
 #   client = Zabbix.client(endpoint: 'https://your-zabbix-server/api_jsonrpc.php')
 #

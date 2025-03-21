@@ -19,9 +19,9 @@ module Zabbix
     def self.singular_method(method, rpc_method, id_field)
       self.send(:define_method, method) do |ids, params = nil|
         if ids.is_a?(Array)
-          rpc_call(rpc_method, { "#{id_field}": ids}.merge(params || { }))
+          rpc_call(rpc_method, { "#{id_field}": ids }.merge(params || {}))
         else
-          rpc_call(rpc_method, { "#{id_field}": [ids]}.merge(params || { })).first
+          rpc_call(rpc_method, { "#{id_field}": [ids] }.merge(params || {})).first
         end
       end
     end

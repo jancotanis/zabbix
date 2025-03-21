@@ -83,9 +83,9 @@ puts client.settings.default_theme
 
 ### Data resourcews
 
-Endpoint for data related requests 
+Endpoint for data related requests
 
-```
+```ruby
 groups = client.hostgroups
 group_hosts = client.hosts({groupids:[groups.first.groupid]})
 

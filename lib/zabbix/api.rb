@@ -31,9 +31,11 @@ module Zabbix
     # @option options [String] :user_agent The User-Agent header sent with requests.
     # @option options [Integer] :timeout Request timeout in seconds.
     def initialize(options = {})
-      options = Zabbix.options.merge(options)  # Merge provided options with default options
+      # Merge provided options with default options
+      options = Zabbix.options.merge(options)
       WrAPI::Configuration::VALID_OPTIONS_KEYS.each do |key|
-        send("#{key}=", options[key])  # Assign each configuration option dynamically
+        # Assign each configuration option dynamically
+        send("#{key}=", options[key])
       end
     end
 
@@ -46,7 +48,8 @@ module Zabbix
     def config
       conf = {}
       WrAPI::Configuration::VALID_OPTIONS_KEYS.each do |key|
-        conf[key] = send(key)  # Build a hash of current configuration values
+        # Build a hash of current configuration values
+        conf[key] = send(key)
       end
       conf
     end
@@ -59,7 +62,8 @@ module Zabbix
     # @example Convert Zabbix clock to DateTime:
     #   api.zabbix_clock(1684500000)  # => #<DateTime: 2023-05-19T09:20:00+00:00>
     def zabbix_clock(secs)
-      Time.at(secs.to_i).to_datetime  # Convert seconds since Unix epoch to DateTime
+      # Convert seconds since Unix epoch to DateTime
+      Time.at(secs.to_i).to_datetime
     end
 
     # Includes core modules from WrAPI and Zabbix:

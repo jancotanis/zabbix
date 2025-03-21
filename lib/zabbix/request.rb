@@ -10,7 +10,6 @@ module Zabbix
     #
     # https://www.jsonrpc.org/specification
     module JSONRPC2
-
       @@id = 1
       ZABBIX_ENDPOINT = '/zabbix/api_jsonrpc.php'
 
