@@ -23,3 +23,7 @@
 ## [0.3.3] - 2024-03-21
 
 - Fix issues with extract method
+
+## [0.3.4] - 2024-03-21
+
+- Fix issues with problems api and use eventids parameter
